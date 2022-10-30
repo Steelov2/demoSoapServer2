@@ -19,10 +19,15 @@ public class DocumentEndpoint {
     public StoreDocumentResponse storeDocument(
             @RequestPayload StoreDocumentRequest request) throws IOException, NoSuchAlgorithmException {
         byte[] data = request.getDocument();
+
+        if(data!=null){
         System.out.println(String.format("received %d bytes", data.length));
         StoreDocumentResponse response = new StoreDocumentResponse();
         String a=FileCheckSumSHA.SHAsum(data);
         response.setSha(a);
-        return response;
+        return response;}
+
+
+        return null;
     }
 }
